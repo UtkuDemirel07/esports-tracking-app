@@ -31,7 +31,7 @@ class LiveFragment : Fragment(), GameFilterReceiver {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.addItemDecoration(VerticalSpaceItemDecoration(24))
 
-        // ✅ Dummy veriler
+        // Dummy data
         allMatches = listOf(
             Match("VALORANT", "FNATIC vs NAVI", "live", "live", "Now", "—"),
             Match("CS2", "Faze vs G2", "live", "live", "Now", "1-1"),
@@ -46,7 +46,7 @@ class LiveFragment : Fragment(), GameFilterReceiver {
         return view
     }
 
-    // ✅ Filtre buraya düşer (HomeFragment ile aynı mantık)
+    //
     override fun onFilterSelected(filter: String) {
 
         baseMatches = if (filter.equals("ALL", true)) {

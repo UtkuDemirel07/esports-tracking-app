@@ -41,4 +41,15 @@
 
     <!-- 🔹 Accessibility -->
     <string name="match_background">Match background image</string>
+
+    <!-- Drawer -->
+    <string name="drawer_players">Players</string>
+    <string name="drawer_historical">Historical Matches</string>
+    <string name="drawer_favourites">Favourites</string>
+    <string name="drawer_settings">Settings</string>
+    <string name="drawer_disclaimer">Disclaimer</string>
+
+    <!-- Historical game card (dummy UI texts) -->
+    <string name="game_desc_default">Legendary finals &amp; iconic plays</string>
+
 </resources>
