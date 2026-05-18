@@ -3,6 +3,7 @@ package com.example.projectgroup.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -10,8 +11,11 @@ import com.example.projectgroup.R
 import com.example.projectgroup.data.Match
 import com.google.android.material.chip.Chip
 
-class MatchAdapter(private var matches: List<Match>) :
-    RecyclerView.Adapter<MatchAdapter.MatchViewHolder>() {
+class MatchAdapter(
+    private var matches: List<Match>,
+    private val onMatchClick: (Match) -> Unit,
+    private val onRemindClick: ((Match) -> Unit)? = null
+) : RecyclerView.Adapter<MatchAdapter.MatchViewHolder>() {
 
     inner class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgBackground: ImageView = itemView.findViewById(R.id.imgBackground)
@@ -19,6 +23,7 @@ class MatchAdapter(private var matches: List<Match>) :
         val title: TextView = itemView.findViewById(R.id.title)
         val subtitle: TextView = itemView.findViewById(R.id.subtitle)
         val status: Chip = itemView.findViewById(R.id.status)
+        val btnRemind: ImageButton = itemView.findViewById(R.id.btnRemind)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchViewHolder {
@@ -37,7 +42,7 @@ class MatchAdapter(private var matches: List<Match>) :
         holder.subtitle.text = match.subtitle
         holder.status.text = match.status
 
-        // 🔹 Arka plan görseli seçimi
+        // Background images
         val bgRes = when (match.game.lowercase()) {
             "lol" -> R.drawable.bg_lol
             "valorant" -> R.drawable.bg_valorant
@@ -46,32 +51,25 @@ class MatchAdapter(private var matches: List<Match>) :
         }
         holder.imgBackground.setImageResource(bgRes)
 
-        // 🔹 Chip rengi duruma göre
-        val context = holder.itemView.context
-        val chipColor = when {
-            match.status.contains("live", true) -> context.getColor(R.color.red)
-            match.status.contains("upcoming", true) -> context.getColor(R.color.blue)
-            match.status.contains("finished", true) -> context.getColor(R.color.green)
-            else -> context.getColor(R.color.gray)
+        // Chip color
+        when {
+            match.status.contains("live", true) -> holder.status.setChipBackgroundColorResource(R.color.red)
+            match.status.contains("upcoming", true) -> holder.status.setChipBackgroundColorResource(R.color.blue)
+            match.status.contains("finished", true) -> holder.status.setChipBackgroundColorResource(R.color.green)
+            else -> holder.status.setChipBackgroundColorResource(R.color.gray)
         }
-        holder.status.setChipBackgroundColorResource(
-            when {
-                match.status.contains("live", true) -> R.color.red
-                match.status.contains("upcoming", true) -> R.color.blue
-                match.status.contains("finished", true) -> R.color.green
-                else -> R.color.gray
-            }
-        )
+
+        // Whole card click -> open match detail
+        holder.itemView.setOnClickListener { onMatchClick(match) }
+
+        // Reminder button only for upcoming AND only if provided
+        val showRemind = onRemindClick != null && match.status.contains("upcoming", true)
+        holder.btnRemind.visibility = if (showRemind) View.VISIBLE else View.GONE
+        holder.btnRemind.setOnClickListener { onRemindClick?.invoke(match) }
     }
 
-    // 🔹 Yeni listeyi güncellemek için (HomeFragment'taki updateList çağrısı için)
     fun updateList(newList: List<Match>) {
-        updateMatches(newList)
-    }
-
-    // 🔹 Asıl liste güncelleme metodu
-    fun updateMatches(newMatches: List<Match>) {
-        matches = newMatches
+        matches = newList
         notifyDataSetChanged()
     }
 }

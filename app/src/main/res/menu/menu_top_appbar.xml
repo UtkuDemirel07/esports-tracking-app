@@ -17,10 +17,4 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:iconTint="@android:color/white" />
 
-    <item
-        android:id="@+id/action_profile"
-        android:title="@string/action_profile"
-        android:icon="@drawable/ic_person"
-        app:showAsAction="always"
-        app:iconTint="@android:color/white" />
 </menu>

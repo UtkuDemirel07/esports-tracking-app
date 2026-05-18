@@ -1,90 +1,108 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:layout_marginBottom="12dp"
-    android:background="@drawable/bg_card_rounded"
-    android:clipToOutline="true">
+    app:cardCornerRadius="18dp"
+    app:cardUseCompatPadding="false"
+    app:cardPreventCornerOverlap="false">
 
-    <!-- 🔹 Arka plan resmi -->
-    <ImageView
-        android:id="@+id/imgBackground"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:alpha="0.4"
-        android:contentDescription="@string/match_background" />
+        android:layout_height="match_parent">
 
-    <!-- 🔹 Üstüne hafif karartma (okunabilirlik için) -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#66000000" />
+        <!-- Background image -->
+        <ImageView
+            android:id="@+id/imgBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:alpha="1.0"
+            android:contentDescription="@string/match_background" />
 
-    <!-- 🔹 İçerik -->
-    <LinearLayout
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical">
+        <!-- Remind button (top-right looks nicer) -->
+        <ImageButton
+            android:id="@+id/btnRemind"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Remind me"
+            android:padding="8dp"
+            android:src="@android:drawable/ic_lock_idle_alarm"
+            android:tint="@android:color/holo_blue_light" />
 
-        <!-- Oyun adı -->
-        <TextView
-            android:id="@+id/game"
-            android:text="LOL"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <!-- Dark overlay -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#33000000" />
 
-        <!-- Takım isimleri -->
-        <TextView
-            android:id="@+id/title"
-            android:text="T1 vs GenG"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp" />
 
-        <!-- Alt bilgi -->
-        <TextView
-            android:id="@+id/subtitle"
-            android:text="upcoming • 18:00"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp" />
+        <!-- content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <!-- Durum etiketi -->
-        <com.google.android.material.chip.Chip
-            android:id="@+id/status"
-            style="@style/Widget.Material3.Chip.Assist.Elevated"
-            android:text="upcoming • 18:00"
-            android:textColor="@android:color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:chipBackgroundColor="@color/teal_700"
-            app:chipStrokeWidth="0dp"
-            app:chipCornerRadius="8dp" />
+            <!-- game names -->
+            <TextView
+                android:id="@+id/game"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOL"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-        <!-- (isteğe bağlı) Saat ve skor -->
-        <TextView
-            android:id="@+id/time"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <!-- team names -->
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="T1 vs GenG"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/score"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-</FrameLayout>
+            <!-- sub info -->
+            <TextView
+                android:id="@+id/subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="upcoming • 18:00"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/status"
+                style="@style/Widget.Material3.Chip.Assist.Elevated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="upcoming • 18:00"
+                android:textColor="@android:color/white"
+                app:chipBackgroundColor="@color/teal_700"
+                app:chipCornerRadius="8dp"
+                app:chipStrokeWidth="0dp" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+</com.google.android.material.card.MaterialCardView>

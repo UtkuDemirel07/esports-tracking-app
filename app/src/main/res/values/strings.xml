@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- 🔹 App Genel -->
+    <!--  App Genel -->
     <string name="app_name">ProjectGroup</string>
 
-    <!-- 🔹 Top App Bar -->
+    <!--  Top App Bar -->
     <string name="action_refresh">Refresh</string>
     <string name="action_profile">Profile</string>
 
-    <!-- 🔹 Bottom Navigation -->
+    <!--  Bottom Navigation -->
     <string name="nav_home">Home</string>
     <string name="nav_live">Live</string>
     <string name="nav_upcoming">Upcoming</string>
 
-    <!-- 🔹 Fragment Başlıkları -->
+    <!-- Fragment titles -->
     <string name="title_home">Home</string>
     <string name="title_live">Live Matches</string>
     <string name="title_upcoming">Upcoming Matches</string>
 
-    <!-- 🔹 Dummy Data İçerikleri -->
+    <!--  Dummy Data  -->
     <string name="live_now">live</string>
     <string name="map_label">map</string>
     <string name="game_label">game</string>
 
-    <!-- 🔹 Toast Mesajları -->
+    <!--  Toast messages -->
     <string name="msg_refreshing">Refreshing...</string>
     <string name="msg_profile_clicked">Profile clicked</string>
     <string name="action_filter">Filter</string>
 
-    <!-- 🔹 Filtre BottomSheet -->
+    <!--  filter BottomSheet -->
     <string name="filter_by_game">Filter by Game</string>
     <string name="filter_all">All</string>
     <string name="game_lol">LoL</string>
@@ -35,11 +35,11 @@
     <string name="game_cs2">CS2</string>
     <string name="action_apply">Apply</string>
 
-    <!-- 🔹 Arama -->
+    <!--  search -->
     <string name="search">Search</string>
     <string name="search_hint">Search matches...</string>
 
-    <!-- 🔹 Accessibility -->
+    <!--  Accessibility -->
     <string name="match_background">Match background image</string>
 
     <!-- Drawer -->

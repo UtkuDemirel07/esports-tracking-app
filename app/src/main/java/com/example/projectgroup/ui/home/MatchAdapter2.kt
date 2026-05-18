@@ -38,7 +38,7 @@ class MatchAdapter2(private var matchList: List<Match>) :
         holder.timeText.text = match.time
         holder.scoreText.text = match.score
 
-        // 🔹 Arka plan (oyuna göre resim seçimi)
+        // background images of games
         val bgRes = when (match.game.lowercase()) {
             "lol" -> R.drawable.bg_lol
             "valorant" -> R.drawable.bg_valorant
@@ -48,7 +48,7 @@ class MatchAdapter2(private var matchList: List<Match>) :
 
         holder.backgroundImage.setImageResource(bgRes)
 
-        // 🔹 Erişilebilirlik için açıklama (strings.xml'deki match_background kullanılır)
+        // 🔹Explanation for access
         holder.backgroundImage.contentDescription =
             holder.itemView.context.getString(R.string.match_background)
     }

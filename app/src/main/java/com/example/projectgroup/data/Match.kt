@@ -6,5 +6,9 @@ data class Match(
     val subtitle: String,
     val status: String,      // "upcoming", "live", "finished"
     val time: String = "",
-    val score: String = ""
+    val score: String = "",
+
+    //Added for reminders
+    val id: Int = 0,
+    val startTimeMillis: Long = 0L
 )

@@ -37,9 +37,13 @@
             android:id="@+id/bottomNav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/card_bg"
             app:menu="@menu/menu_bottom_nav"
-            app:itemIconTint="@color/nav_item"
-            app:itemTextColor="@color/nav_item" />
+            app:itemIconTint="@color/nav_icon_tint"
+            app:itemTextColor="@color/nav_text_tint"
+            app:labelVisibilityMode="labeled"/>
+
+
     </LinearLayout>
 
     <!-- Left Navigation Drawer -->
